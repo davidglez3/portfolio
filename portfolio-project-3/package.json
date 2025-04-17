@@ -1,0 +1,16 @@
+{
+  "name": "portfolio-project",
+  "version": "1.0.0",
+  "description": "A visually appealing portfolio showcasing projects with interactive elements.",
+  "main": "src/index.html",
+  "scripts": {
+    "start": "live-server src",
+    "build": "echo 'Build step not defined'"
+  },
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}
