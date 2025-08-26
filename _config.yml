@@ -1,0 +1,6 @@
+title: "Mi Blog"
+description: "Un blog sobre mis aprendizajes y proyectos"
+baseurl: "/mi-blog"
+url: ""
+theme: minima
+author: "Tu Nombre"
