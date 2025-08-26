@@ -1,12 +1,8 @@
 ---
-layout: default
-title: Inicio
+layout: home
+title: "Bienvenido a Mi Blog"
 ---
 
-# ¡Bienvenido a mi blog!
+¡Hola! Este es mi blog personal creado con Jekyll y GitHub Pages.
 
-Aquí encontrarás mis artículos y aprendizajes sobre tecnología, programación y más.
-
-{% for post in site.posts %}
-- [{{ post.title }}]({{ post.url | relative_url }}) - {{ post.date | date: "%d/%m/%Y" }}
-{% endfor %}
+Aquí compartiré mis aprendizajes y proyectos. Revisa los posts más recientes abajo.
