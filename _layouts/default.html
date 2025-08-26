@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ page.title }} | {{ site.title }}</title>
+  <link rel="stylesheet" href="{{ "/assets/style.css" | relative_url }}">
+</head>
+<body>
+  <header>
+    <img src="{{ '/assets/logo.png' | relative_url }}" alt="Logo" width="60" />
+    <h1><a href="{{ site.baseurl }}/">{{ site.title }}</a></h1>
+    <nav>
+      <a href="{{ site.baseurl }}/">Inicio</a> |
+      <a href="{{ site.baseurl }}/about.html">Acerca de</a>
+    </nav>
+    <hr>
+  </header>
+  <main>
+    {{ content }}
+  </main>
+  <footer>
+    <hr>
+    <p>&copy; {{ site.author }} {{ site.time | date: "%Y" }}</p>
+  </footer>
+</body>
+</html>
