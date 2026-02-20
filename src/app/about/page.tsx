@@ -43,7 +43,7 @@ export default function AboutPage() {
             <div className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-3xl overflow-hidden shadow-lg ring-4 ring-primary-100 dark:ring-primary-900/50">
               {/* Replace with your actual photo */}
               <img
-              src="/portfolio/public/viñeta_david_adimn.png"
+              src="/portfolio/viñeta_david_adimn.png"
               alt="Tu nombre"
               className="w-full h-full object-cover"
             />
