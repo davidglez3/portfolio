@@ -39,7 +39,6 @@ interface MDXContentProps {
 export default function MDXContent({ source }: MDXContentProps) {
   return (
     <div className="prose-custom">
-      {/* @ts-expect-error - RSC async component */}
       <MDXRemote source={source} components={components} />
     </div>
   );
