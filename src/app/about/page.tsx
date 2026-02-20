@@ -4,7 +4,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Sobre mí',
-  description: 'Conóceme — Software Engineer apasionado por el desarrollo web moderno.',
+  description: 'Conóceme — Administrador de sistemas informáticos en red.',
 };
 
 const skills: Record<string, string[]> = {
@@ -16,17 +16,20 @@ const skills: Record<string, string[]> = {
 };
 
 const socials = [
-  { href: 'https://github.com/yourusername',   label: 'GitHub',   Icon: FiGithub },
+  { href: 'https://github.com/davidglez3',   label: 'GitHub',   Icon: FiGithub },
   { href: 'https://linkedin.com/in/yourusername', label: 'LinkedIn', Icon: FiLinkedin },
   { href: 'https://twitter.com/yourusername', label: 'Twitter', Icon: FiTwitter },
-  { href: 'mailto:hello@example.com',          label: 'Email',    Icon: FiMail },
+  { href: 'mailto:davidglez3@gmail.com',          label: 'Email',    Icon: FiMail },
 ];
 
 const timeline = [
-  { year: '2023–Hoy', role: 'Senior Frontend Developer', company: 'Tech Startup XYZ', desc: 'Liderando el desarrollo del producto principal con Next.js y TypeScript.' },
-  { year: '2021–2023', role: 'Full-Stack Developer',     company: 'Agencia Digital ABC', desc: 'Desarrollo de aplicaciones web para clientes internacionales.' },
-  { year: '2020–2021', role: 'Junior Developer',          company: 'Freelance',          desc: 'Primeros pasos profesionales construyendo sitios y apps para clientes.' },
-  { year: '2016–2020', role: 'Grado en Informática',     company: 'Universidad XYZ',    desc: 'Especialización en desarrollo de software e ingeniería del software.' },
+  { year: '2024-hoy', role: 'Soporte técnico', company: 'Econocom', desc: 'asistencia a usuarios en la resolución de incidencias relacionadas con hardware, software y redes. Mi labor se centra en garantizar la continuidad operativa, ofreciendo soluciones rápidas y eficientes tanto de forma presencial como remota.' },
+  { year: '2020', role: 'Curso Seguridad Informática Ofensiva', company: 'SecurityByDefault', desc: 'Comenzando en el mundo de la ciberseguridad y red team.' },
+  { year: '2018-2024', role: 'Telecomunicaciones en MOD', company: 'MOD', desc: 'Administración de servidor de geolocalización.Adminitrar las comunicaciones dentro del grupo. Resolución de problemas informáticos.' },
+  { year: '2014–2015', role: 'Desarrolador FoxPro',     company: 'Capgemini', desc: 'Desarrollo de aplicaciones de escritorio en FoxPro para importante cliente del mundo de las aseguradoras.' },
+  { year: '2014', role: 'Curso C#.NET',     company: 'Dicampus', desc: 'Desarrollo de aplicaciones .NET con C#.' },
+  { year: '2012', role: 'Certificación LPIC-1',          company: 'Freelance',          desc: 'Certificación de Linux.' },
+  { year: '2010–2012', role: 'CFGS Administrador de sistemas informáticos en red (ASIR)',     company: 'Sagrada Familia el Pilar',    desc: 'Administración de sistemas y bases de datos.' },
 ];
 
 export default function AboutPage() {
@@ -48,19 +51,17 @@ export default function AboutPage() {
           {/* Bio */}
           <div className="flex-1">
             <h1 className="font-display font-extrabold text-4xl sm:text-5xl text-slate-900 dark:text-white mb-2">
-              Alex Martínez
+              David González Lombraña
             </h1>
             <p className="text-primary-600 dark:text-primary-400 font-medium mb-4">
-              Software Engineer & Full-Stack Developer
+              Administrador de sistemas informáticos en red con pasión por la programación y la ciberseguridad.
             </p>
             <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-              Apasionado por crear experiencias digitales excepcionales. Con más de 4 años de experiencia
-              construyendo aplicaciones web escalables, me especializo en el ecosistema React/Next.js
-              y en diseño de APIs robustas.
+              Desde que comencé mi carrera en el mundo de la informática, he estado fascinado por cómo la tecnología puede resolver problemas complejos y mejorar la vida de las personas. Mi experiencia abarca desde la administración de sistemas hasta el desarrollo de software, con un enfoque especial en la seguridad informática.
+              Actualmente me encuentro estudiando cursos de ciencia de datos y ciberseguridad ofensiva, buscando siempre ampliar mis conocimientos y habilidades en estas áreas tan dinámicas. Mi objetivo es seguir creciendo profesionalmente y contribuir a proyectos que tengan un impacto positivo en la comunidad tecnológica.
             </p>
             <p className="text-slate-600 dark:text-slate-400 leading-relaxed mt-3">
-              Cuando no estoy programando, me encontrarás leyendo sobre arquitectura de software,
-              contribuyendo a proyectos open source o haciendo senderismo.
+              Cuando no estoy trabajando o estudiando, me gusta compartir mis conocimientos a través de mi blog y participar en comunidades de tecnología. Creo firmemente en el poder del aprendizaje continuo y la colaboración para impulsar la innovación.
             </p>
 
             {/* Social links */}
