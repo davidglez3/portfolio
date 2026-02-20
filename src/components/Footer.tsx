@@ -23,7 +23,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="flex flex-col items-center md:items-start gap-2">
             <Link href="/" className="font-display font-bold text-xl text-slate-900 dark:text-white">
-              Alex<span className="gradient-text">.</span>
+              David<span className="gradient-text">.</span>
             </Link>
             <p className="text-sm text-slate-500 dark:text-slate-400">
               Adminsitrador de sistemas infomráticos.
