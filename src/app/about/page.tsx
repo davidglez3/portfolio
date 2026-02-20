@@ -42,9 +42,11 @@ export default function AboutPage() {
           <div className="flex-shrink-0">
             <div className="relative w-32 h-32 sm:w-40 sm:h-40 rounded-3xl overflow-hidden shadow-lg ring-4 ring-primary-100 dark:ring-primary-900/50">
               {/* Replace with your actual photo */}
-              <div className="w-full h-full bg-gradient-to-br from-primary-400 to-indigo-500 flex items-center justify-center text-white text-5xl font-bold font-display select-none">
-                A
-              </div>
+              <img
+              src="/portfolio/foto.jpg"
+              alt="Tu nombre"
+              className="w-full h-full object-cover"
+            />
             </div>
           </div>
 
