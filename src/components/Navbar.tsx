@@ -44,7 +44,7 @@ export default function Navbar() {
       <nav className="section-container flex items-center justify-between h-16" aria-label="Navegación principal">
         {/* Logo */}
         <Link href="/" className="font-display font-bold text-xl text-slate-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
-          Alex<span className="gradient-text">.</span>
+          David<span className="gradient-text">.</span>
         </Link>
 
         {/* Desktop links */}

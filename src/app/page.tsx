@@ -7,8 +7,8 @@ import AnimatedSection from '@/components/AnimatedSection';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Alex Martínez — Portfolio',
-  description: 'Software Engineer & Full-Stack Developer especializado en React, Next.js y TypeScript.',
+  title: 'David González Lombraña — Portfolio',
+  description: 'Administrador de sistemas informáticos en red con pasión por la programación y la ciberseguridad.',
 };
 
 export default function HomePage() {
@@ -38,14 +38,13 @@ export default function HomePage() {
           <AnimatedSection delay={0.1}>
             <h1 className="font-display font-extrabold text-5xl sm:text-6xl lg:text-7xl text-slate-900 dark:text-white leading-tight max-w-3xl">
               Hola, soy{' '}
-              <span className="gradient-text">Alex</span>
+              <span className="gradient-text">David</span>
             </h1>
           </AnimatedSection>
 
           <AnimatedSection delay={0.2}>
             <p className="mt-6 text-xl text-slate-600 dark:text-slate-400 max-w-xl leading-relaxed">
-              Software Engineer & Full-Stack Developer. Construyo productos digitales
-              rápidos, accesibles y con excelente experiencia de usuario.
+              Administrador de sistemas informáticos en red con pasión por la programación y la ciberseguridad.
             </p>
           </AnimatedSection>
 
@@ -59,7 +58,7 @@ export default function HomePage() {
                 Sobre mí
               </Link>
               <div className="flex items-center gap-2 ml-2">
-                <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="p-2 rounded-xl text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                <a href="https://github.com/davidglez3" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="p-2 rounded-xl text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
                   <FiGithub className="w-5 h-5" />
                 </a>
                 <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="p-2 rounded-xl text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">

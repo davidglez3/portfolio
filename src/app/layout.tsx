@@ -6,17 +6,17 @@ import ThemeProvider from '@/components/ThemeProvider';
 
 export const metadata: Metadata = {
   title: {
-    default: 'Alex Martínez — Portfolio',
-    template: '%s | Alex Martínez',
+    default: 'David González — Portfolio',
+    template: '%s | David González',
   },
-  description: 'Software Engineer & Full-Stack Developer especializado en React, Next.js y TypeScript.',
-  keywords: ['portfolio', 'developer', 'software engineer', 'React', 'Next.js', 'TypeScript'],
-  authors: [{ name: 'Alex Martínez' }],
+  description: 'Administrador de sistemas informáticos en red con pasión por la programación y la ciberseguridad.',
+  keywords: ['portfolio', 'developer', 'systems administrator', 'cybersecurity'],
+  authors: [{ name: 'David González Lombraña' }],
   openGraph: {
     type: 'website',
     locale: 'es_ES',
-    url: 'https://yourusername.github.io/portfolio',
-    siteName: 'Alex Martínez Portfolio',
+    url: 'https://davidglez3.github.io/portfolio',
+    siteName: 'David González Portfolio',
   },
 };
 
