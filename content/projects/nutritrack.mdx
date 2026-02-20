@@ -1,0 +1,80 @@
+---
+title: "NutriTrack — App de Seguimiento Nutricional"
+date: "2024-02-28"
+summary: "Aplicación móvil-first para tracking de nutrición con análisis de macros, base de datos de alimentos con más de 1M de productos y generación de planes alimenticios personalizados con IA."
+coverImage: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=1200&q=80"
+technologies: ["React Native", "Expo", "TypeScript", "FastAPI", "Python", "OpenAI API", "MongoDB"]
+liveUrl: "https://nutritrack.example.com"
+repoUrl: "https://github.com/yourusername/nutritrack"
+featured: true
+---
+
+## Sobre el proyecto
+
+**NutriTrack** nació de una necesidad personal: quería una app de nutrición que realmente entendiera mis objetivos y me ayudara a alcanzarlos con recomendaciones inteligentes, no solo con tablas de calorías.
+
+## Funcionalidades clave
+
+### Escáner de alimentos con IA
+El corazón de la app es su sistema de reconocimiento de alimentos:
+
+- **Cámara en tiempo real** — Apunta y la IA identifica el plato al instante
+- **Escáner de código de barras** — Base de datos con más de 1 millón de productos
+- **Entrada por voz** — "Comí un plátano mediano y dos huevos revueltos"
+
+```python
+# Ejemplo del endpoint de análisis de imagen
+@router.post("/analyze-meal")
+async def analyze_meal(image: UploadFile, user_id: str):
+    # Procesar imagen con OpenAI Vision
+    response = await openai_client.chat.completions.create(
+        model="gpt-4-vision-preview",
+        messages=[{
+            "role": "user",
+            "content": [
+                {"type": "image_url", "image_url": {"url": image_url}},
+                {"type": "text", "text": NUTRITION_ANALYSIS_PROMPT}
+            ]
+        }]
+    )
+    
+    nutrition_data = parse_nutrition_response(response)
+    return NutritionEntry(**nutrition_data, user_id=user_id)
+```
+
+### Plan alimenticio personalizado
+
+El sistema de IA genera planes semanales considerando:
+- Objetivos (pérdida de peso, ganancia muscular, mantenimiento)
+- Restricciones dietéticas y alergias
+- Preferencias culinarias
+- Horario de entrenamiento
+
+### Dashboard de progreso
+
+- Gráficos de evolución de peso y composición corporal
+- Análisis de tendencias de micronutrientes
+- Streaks y logros para mantener la motivación
+- Informes semanales exportables en PDF
+
+## Stack tecnológico en detalle
+
+### Frontend (React Native + Expo)
+La decisión de usar **Expo** simplificó enormemente el proceso de build y distribución. La navegación se implementó con **Expo Router** (basado en file-system routing, similar a Next.js).
+
+### Backend (FastAPI + Python)
+Elegí **FastAPI** por su excelente soporte para async/await y la generación automática de documentación OpenAPI. Python fue la elección natural dado el ecosistema de ML y las librerías de análisis nutricional disponibles.
+
+### Base de datos (MongoDB)
+Los documentos de alimentos tienen estructuras variables (algunos tienen macros, otros también tienen vitaminas, minerales, etc.), lo que hacía a **MongoDB** una elección natural frente a un esquema SQL rígido.
+
+## Resultados
+
+- **4.8/5** de valoración media en App Store y Google Play
+- **50,000+** usuarios activos mensuales
+- **2M+** alimentos registrados en la plataforma
+- Tiempo medio de registro de una comida: **< 30 segundos**
+
+## Aprendizajes
+
+Trabajar con OpenAI API a escala requirió implementar un sistema robusto de **rate limiting y caché** para controlar costes. También aprendí la importancia del **offline-first design** en apps móviles: los usuarios quieren registrar comidas aunque no tengan conexión.

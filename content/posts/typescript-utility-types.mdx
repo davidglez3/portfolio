@@ -1,0 +1,97 @@
+---
+title: "TypeScript Avanzado: Tipos de Utilidad que Debes Conocer"
+date: "2024-05-20"
+summary: "Explora los tipos de utilidad más poderosos de TypeScript: Partial, Required, Pick, Omit, Exclude, Extract y más, con ejemplos del mundo real."
+coverImage: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&q=80"
+tags: ["TypeScript", "JavaScript", "Programación"]
+---
+
+## Tipos de Utilidad en TypeScript
+
+TypeScript viene con una serie de **tipos de utilidad predefinidos** que hacen que la manipulación de tipos sea mucho más expresiva y concisa. Veamos los más útiles.
+
+## `Partial<T>` — Todos los campos opcionales
+
+Convierte todas las propiedades de un tipo en opcionales. Perfecto para funciones de actualización parcial:
+
+```typescript
+interface User {
+  id: number;
+  name: string;
+  email: string;
+  age: number;
+}
+
+// Solo necesitamos actualizar algunos campos
+async function updateUser(id: number, updates: Partial<User>) {
+  // updates puede tener cualquier subconjunto de campos de User
+  await db.users.update({ where: { id }, data: updates });
+}
+
+// ✅ Válido
+updateUser(1, { name: 'Ana García' });
+updateUser(1, { email: 'ana@example.com', age: 28 });
+```
+
+## `Pick<T, K>` — Seleccionar propiedades
+
+Crea un tipo con solo un subconjunto de propiedades:
+
+```typescript
+// Solo necesitamos mostrar nombre y email en la UI
+type UserPreview = Pick<User, 'name' | 'email'>;
+
+function UserCard({ name, email }: UserPreview) {
+  return (
+    <div>
+      <strong>{name}</strong>
+      <span>{email}</span>
+    </div>
+  );
+}
+```
+
+## `Omit<T, K>` — Excluir propiedades
+
+El opuesto de `Pick`. Útil cuando quieres todo *excepto* algunos campos:
+
+```typescript
+// Tipo para crear un usuario (sin el id, que lo genera la BD)
+type CreateUserInput = Omit<User, 'id'>;
+
+async function createUser(input: CreateUserInput): Promise<User> {
+  return db.users.create({ data: input });
+}
+```
+
+## `Record<K, V>` — Diccionarios tipados
+
+Crea un tipo de objeto con claves de tipo `K` y valores de tipo `V`:
+
+```typescript
+type StatusMap = Record<string, { label: string; color: string }>;
+
+const statuses: StatusMap = {
+  active:   { label: 'Activo',    color: 'green' },
+  inactive: { label: 'Inactivo',  color: 'gray' },
+  pending:  { label: 'Pendiente', color: 'yellow' },
+};
+```
+
+## `ReturnType<T>` — Inferir el tipo de retorno
+
+Extrae automáticamente el tipo de retorno de una función:
+
+```typescript
+async function fetchUser(id: number) {
+  const response = await fetch(`/api/users/${id}`);
+  return response.json() as Promise<User>;
+}
+
+// ReturnType infiere automáticamente: Promise<User>
+type FetchUserResult = ReturnType<typeof fetchUser>;
+```
+
+## Conclusión
+
+Los tipos de utilidad son una de las características más poderosas de TypeScript. Dominarlos te permitirá escribir código más expresivo, seguro y mantenible, evitando la duplicación de definiciones de tipos.

@@ -1,0 +1,88 @@
+---
+title: "Dominando React Server Components en Next.js 14"
+date: "2024-06-15"
+summary: "Una guía práctica para entender y aprovechar al máximo los React Server Components en Next.js 14, con ejemplos reales y patrones de uso."
+coverImage: "https://images.unsplash.com/photo-1555066931-4365d14431b9?w=1200&q=80"
+tags: ["React", "Next.js", "Server Components"]
+---
+
+## Introducción
+
+Los **React Server Components (RSC)** representan un cambio de paradigma fundamental en cómo pensamos sobre la renderización en aplicaciones React. Con Next.js 14 y el App Router, los RSC son ahora el comportamiento por defecto.
+
+## ¿Qué son los Server Components?
+
+Los Server Components son componentes de React que se ejecutan exclusivamente en el servidor. Esto significa que:
+
+- **No tienen estado** (`useState` no está disponible)
+- **No pueden usar efectos** (`useEffect` no funciona)
+- **Acceden directamente a recursos del servidor** (bases de datos, sistema de archivos)
+- **No envían JavaScript al cliente**
+
+```tsx
+// Este componente se ejecuta en el servidor
+// y puede acceder directamente a la base de datos
+async function UserProfile({ userId }: { userId: string }) {
+  const user = await db.users.findUnique({ where: { id: userId } });
+  
+  return (
+    <div className="profile">
+      <h1>{user.name}</h1>
+      <p>{user.email}</p>
+    </div>
+  );
+}
+```
+
+## Cuándo usar Server vs Client Components
+
+La regla general es: **usa Server Components por defecto** y añade `'use client'` solo cuando necesites:
+
+- Interactividad con eventos del usuario
+- Hooks de React (`useState`, `useEffect`, etc.)
+- APIs del navegador
+- Librerías que dependen de APIs del DOM
+
+## Patrones de composición
+
+Un patrón muy potente es pasar Server Components como `children` a Client Components:
+
+```tsx
+// ClientWrapper.tsx - Client Component
+'use client';
+import { useState } from 'react';
+
+export default function Expandable({ children }: { children: React.ReactNode }) {
+  const [expanded, setExpanded] = useState(false);
+  return (
+    <div>
+      <button onClick={() => setExpanded(v => !v)}>
+        {expanded ? 'Colapsar' : 'Expandir'}
+      </button>
+      {expanded && children}
+    </div>
+  );
+}
+```
+
+```tsx
+// page.tsx - Server Component
+import Expandable from './ClientWrapper';
+import HeavyServerContent from './HeavyServerContent';
+
+export default function Page() {
+  return (
+    <Expandable>
+      <HeavyServerContent /> {/* ¡Sigue siendo un Server Component! */}
+    </Expandable>
+  );
+}
+```
+
+## Beneficios de rendimiento
+
+Los RSC eliminan el round-trip entre cliente y servidor para obtener datos. Con los RSC, el servidor puede enviar directamente el HTML renderizado con los datos ya integrados.
+
+## Conclusión
+
+Los React Server Components son una herramienta poderosa que, usada correctamente, puede mejorar drásticamente el rendimiento de tus aplicaciones. La clave está en entender qué componentes necesitan ejecutarse en el cliente y cuáles pueden quedarse en el servidor.

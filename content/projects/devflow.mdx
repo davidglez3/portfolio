@@ -1,0 +1,72 @@
+---
+title: "DevFlow — Plataforma de Gestión de Proyectos"
+date: "2024-04-10"
+summary: "Aplicación web full-stack para gestión ágil de proyectos de software con tableros Kanban en tiempo real, chat integrado y seguimiento de métricas de equipo."
+coverImage: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=1200&q=80"
+technologies: ["Next.js 14", "TypeScript", "PostgreSQL", "Prisma", "Socket.io", "Tailwind CSS", "Docker"]
+liveUrl: "https://devflow.example.com"
+repoUrl: "https://github.com/yourusername/devflow"
+featured: true
+---
+
+## Descripción del proyecto
+
+**DevFlow** es una plataforma de gestión de proyectos diseñada específicamente para equipos de desarrollo de software. Combina tableros Kanban en tiempo real con herramientas de comunicación y métricas de equipo en un solo lugar.
+
+## El problema que resuelve
+
+Los equipos de desarrollo suelen usar múltiples herramientas desconectadas entre sí: una para el tracking de tareas, otra para la comunicación, otra para métricas. DevFlow unifica todo esto en una experiencia cohesionada.
+
+## Características principales
+
+### Tableros Kanban en tiempo real
+- Drag & drop de tarjetas con sincronización instantánea vía WebSockets
+- Múltiples vistas: Kanban, Lista, Timeline
+- Filtros avanzados por asignee, etiquetas, fechas
+
+### Sistema de estimación
+El sistema implementa **Planning Poker** digital para facilitar la estimación en equipo:
+
+```typescript
+// Ejemplo de tipo para una sesión de estimación
+interface EstimationSession {
+  id: string;
+  taskId: string;
+  participants: User[];
+  votes: Map<string, number | '?'>;
+  revealed: boolean;
+  consensus: number | null;
+}
+```
+
+### Dashboard de métricas
+- Velocity del equipo por sprint
+- Burndown charts
+- Tiempo de ciclo y lead time
+- Distribución de trabajo por desarrollador
+
+## Arquitectura técnica
+
+La aplicación sigue una arquitectura de **tres capas**:
+
+1. **Frontend** — Next.js 14 con App Router, Tailwind CSS, Framer Motion
+2. **Backend** — API Routes de Next.js + Socket.io para tiempo real
+3. **Base de datos** — PostgreSQL con Prisma ORM
+
+### Decisiones de diseño
+
+Opté por usar **PostgreSQL** en lugar de una base de datos NoSQL porque los datos de gestión de proyectos son altamente relacionales. El uso de **Prisma** simplificó enormemente la gestión de migraciones y el tipado de las consultas.
+
+Para el tiempo real, **Socket.io** resultó ser la mejor opción dado que necesitábamos compatibilidad con entornos donde los WebSockets nativos podrían estar bloqueados.
+
+## Lecciones aprendidas
+
+- La sincronización en tiempo real es compleja: implementar **optimistic updates** fue crucial para la UX
+- El diseño de la base de datos para soportar múltiples workspaces requirió pensar bien el modelo de datos desde el inicio
+- La internacionalización debería planificarse desde el día 0, no añadirse después
+
+## Próximas funcionalidades
+
+- Integración con GitHub/GitLab (vincular PRs a tareas)
+- Notificaciones por email y Slack
+- API pública para integraciones de terceros
